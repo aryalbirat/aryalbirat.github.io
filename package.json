@@ -1,6 +1,7 @@
 {
   "name": "birat-aryal-portfolio",
   "private": true,
+  "homepage": "https://aryalbirat.github.io/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
