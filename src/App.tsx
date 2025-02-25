@@ -1,10 +1,10 @@
 
 import Navbar from './components/Navbar';
 import Hero from './components/MainPage';
-import About from './components/About';
-import Portfolio from './components/Portfolio';
-import PhotoGallery from './components/PhotoGallery';
-import Contact from './components/Contact';
+// import About from './components/About';
+// import Portfolio from './components/Portfolio';
+// import PhotoGallery from './components/PhotoGallery';
+// import Contact from './components/Contact';
 // import CustomCursor from './components/CustomCursor';
 
 function App() {
@@ -13,10 +13,10 @@ function App() {
       {/* <CustomCursor /> */}
       <Navbar />
       <Hero />
-      <About />
+      {/* <About />
       <Portfolio />
       <PhotoGallery />
-      <Contact />
+      <Contact /> */}
     </div>
   );
 }
