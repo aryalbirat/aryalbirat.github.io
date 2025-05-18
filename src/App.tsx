@@ -5,20 +5,21 @@ import Hero from './components/MainPage';
 // import Portfolio from './components/Portfolio';
 // import PhotoGallery from './components/PhotoGallery';
 // import Contact from './components/Contact';
-// import CustomCursor from './components/CustomCursor';
+// import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="bg-gray-900 text-white">
-      {/* <CustomCursor /> */}
+    <div className="bg-secondary-950 text-secondary-50 min-h-screen overflow-hidden">
       <Navbar />
-      <Hero />
-      {/* <About />
-      <Portfolio />
-      <PhotoGallery />
-      <Contact /> */}
-    </div>
-  );
+      <main>
+        <Hero />
+        {/* <About />
+        <Portfolio />
+        <PhotoGallery />
+        <Contact /> */}
+      </main>
+      {/* <Footer /> */}
+    </div>  );
 }
 
 export default App;

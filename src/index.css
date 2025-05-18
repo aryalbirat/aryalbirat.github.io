@@ -1,3 +1,130 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    @apply overflow-x-hidden;
+  }
+  
+  body {
+    @apply font-sans bg-secondary-950 text-secondary-50 overflow-x-hidden antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+  
+  h1 {
+    @apply text-4xl sm:text-5xl lg:text-6xl;
+  }
+  
+  h2 {
+    @apply text-3xl sm:text-4xl lg:text-5xl;
+  }
+  
+  h3 {
+    @apply text-2xl sm:text-3xl;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  a {
+    @apply transition-colors duration-300;
+  }
+}
+
+@layer components {  .section-container {
+    @apply container mx-auto px-4 sm:px-6 py-10 sm:py-16;
+  }
+  .section-title {
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 relative;
+  }
+    .section-subtitle {
+    @apply text-lg sm:text-xl text-secondary-100 max-w-2xl mx-auto;
+  }
+    .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-300 to-indigo-400 animate-gradient;
+  }
+    .gradient-button {
+    @apply relative px-6 py-3 rounded-lg font-semibold text-white overflow-hidden transition-all duration-300 shadow-md hover:shadow-glow z-10 mobile-tap-target;
+  }
+  .gradient-button::before {
+    @apply content-[''] absolute inset-0 bg-button-gradient from-primary-700 to-primary-500 transition-all duration-300 z-[-1];
+  }
+  
+  .gradient-button:hover::before {
+    @apply opacity-90 scale-[1.03];
+  }
+  
+  .gradient-button:active::before {
+    @apply scale-95;
+  }
+  
+  .gradient-button span {
+    @apply relative z-10;
+  }
+  
+  .outline-button {
+    @apply px-6 py-3 rounded-lg border border-primary-500/30 text-primary-400 font-semibold hover:bg-primary-500/10 transition-all duration-300 mobile-tap-target;
+  }
+  
+  .outline-button:active {
+    @apply scale-95;
+  }
+  
+  .card {
+    @apply bg-secondary-800 rounded-xl p-6 border border-secondary-700 shadow-xl transition-all duration-300 hover:shadow-glow relative overflow-hidden;
+  }
+  
+  .card::before {
+    @apply content-[''] absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-600 to-primary-400 opacity-0 transition-opacity duration-300;
+  }
+  
+  .card:hover::before {
+    @apply opacity-100;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 bg-secondary-800 border border-secondary-700 rounded-lg text-white focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-colors duration-300;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .mobile-tap-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  
+  .shadow-glow {
+    @apply shadow-[0_0_15px_-3px_rgba(59,130,255,0.4)];
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}

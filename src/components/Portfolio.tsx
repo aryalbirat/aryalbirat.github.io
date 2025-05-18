@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Maximize2 } from 'lucide-react';
+import { ExternalLink, Github, Maximize2, X } from 'lucide-react';
 
 interface Project {
   id: number;
@@ -52,10 +52,9 @@ const Portfolio = () => {
   const filteredProjects = filter === 'all'
     ? projects
     : projects.filter(project => project.category === filter);
-
   return (
-    <section id="portfolio" className="py-20 bg-gray-900">
-      <div className="container mx-auto px-6">
+    <section id="portfolio" className="py-10 sm:py-16 bg-secondary-950">
+      <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -63,8 +62,8 @@ const Portfolio = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-white mb-6">My Work</h2>
-          <p className="text-xl text-blue-200 mb-8">
+          <h2 className="section-title">My Work</h2>
+          <p className="section-subtitle mb-8">
             Explore my latest projects and creative endeavors
           </p>
 
@@ -77,8 +76,8 @@ const Portfolio = () => {
                 onClick={() => setFilter(category)}
                 className={`px-6 py-2 rounded-full font-medium transition-colors duration-300 ${
                   filter === category
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-800 text-blue-200 hover:bg-gray-700'
+                    ? 'bg-gradient-to-r from-primary-600 to-primary-400 text-white'
+                    : 'bg-secondary-800 text-secondary-100 hover:bg-secondary-700'
                 }`}
               >
                 {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -101,60 +100,64 @@ const Portfolio = () => {
                 exit={{ opacity: 0, scale: 0.8 }}
                 whileHover={{ y: -10 }}
                 transition={{ duration: 0.5 }}
-                className="group relative bg-gray-800 rounded-xl overflow-hidden shadow-xl"
+                className="card group overflow-hidden"
               >
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-64 overflow-hidden rounded-lg mb-4">
                   <img
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-secondary-900 via-secondary-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                  <p className="text-blue-200 mb-4">{project.description}</p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech, index) => (
-                      <span
-                        key={index}
-                        className="px-3 py-1 text-sm bg-gray-700 text-blue-200 rounded-full"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex space-x-4">
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-400 hover:text-blue-300 transition-colors duration-300"
-                      >
-                        <ExternalLink className="w-5 h-5" />
-                      </a>
-                    )}
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-400 hover:text-blue-300 transition-colors duration-300"
-                      >
-                        <Github className="w-5 h-5" />
-                      </a>
-                    )}
-                    <button
-                      onClick={() => setSelectedProject(project)}
-                      className="text-blue-400 hover:text-blue-300 transition-colors duration-300"
+                <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                <p className="text-secondary-100 mb-4">{project.description}</p>
+                
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.technologies.map((tech, index) => (
+                    <span
+                      key={index}
+                      className="px-3 py-1 text-xs rounded-full bg-secondary-700 text-primary-300"
                     >
-                      <Maximize2 className="w-5 h-5" />
-                    </button>
-                  </div>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex space-x-4">
+                  {project.liveUrl && (
+                    <motion.a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="w-10 h-10 rounded-full bg-primary-500/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-primary-500/30 transition-colors duration-300"
+                    >
+                      <ExternalLink className="w-5 h-5" />
+                    </motion.a>
+                  )}
+                  {project.githubUrl && (
+                    <motion.a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="w-10 h-10 rounded-full bg-primary-500/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-primary-500/30 transition-colors duration-300"
+                    >
+                      <Github className="w-5 h-5" />
+                    </motion.a>
+                  )}
+                  <motion.button
+                    onClick={() => setSelectedProject(project)}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="w-10 h-10 rounded-full bg-primary-500/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-primary-500/30 transition-colors duration-300"
+                  >
+                    <Maximize2 className="w-5 h-5" />
+                  </motion.button>
                 </div>
               </motion.div>
             ))}
@@ -169,68 +172,75 @@ const Portfolio = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedProject(null)}
-              className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 bg-secondary-950/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
             >
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
                 onClick={(e) => e.stopPropagation()}
-                className="bg-gray-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+                className="card max-w-4xl w-full max-h-[90vh] overflow-y-auto border-primary-500/30"
               >
-                <div className="relative h-96">
+                <div className="relative h-96 -mx-6 -mt-6 mb-6 overflow-hidden">
                   <img
                     src={selectedProject.image}
                     alt={selectedProject.title}
                     className="w-full h-full object-cover"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-secondary-900 via-secondary-900/40 to-transparent" />
                   <button
                     onClick={() => setSelectedProject(null)}
-                    className="absolute top-4 right-4 text-white hover:text-blue-400 transition-colors duration-300"
+                    className="absolute top-4 right-4 w-10 h-10 rounded-full bg-secondary-800/80 backdrop-blur-sm flex items-center justify-center text-white hover:bg-primary-500/30 transition-colors duration-300"
                   >
-                    <Maximize2 className="w-6 h-6" />
+                    <X className="w-6 h-6" />
                   </button>
                 </div>
 
-                <div className="p-8">
-                  <h3 className="text-2xl font-bold text-white mb-4">{selectedProject.title}</h3>
-                  <p className="text-blue-200 mb-6">{selectedProject.description}</p>
+                <h3 className="text-2xl font-bold text-white mb-4">{selectedProject.title}</h3>
+                <p className="text-secondary-100 mb-6">{selectedProject.description}</p>
 
-                  <div className="flex flex-wrap gap-3 mb-6">
-                    {selectedProject.technologies.map((tech, index) => (
-                      <span
-                        key={index}
-                        className="px-4 py-2 bg-gray-700 text-blue-200 rounded-full"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                <div className="flex flex-wrap gap-3 mb-6">
+                  {selectedProject.technologies.map((tech, index) => (
+                    <span
+                      key={index}
+                      className="px-4 py-2 bg-secondary-700 text-primary-300 rounded-full"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
 
-                  <div className="flex space-x-6">
-                    {selectedProject.liveUrl && (
-                      <a
-                        href={selectedProject.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors duration-300"
-                      >
+                <div className="flex flex-wrap gap-4">
+                  {selectedProject.liveUrl && (
+                    <motion.a
+                      href={selectedProject.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="gradient-button"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <span className="flex items-center gap-2">
                         <ExternalLink className="w-5 h-5" />
-                        <span>View Live</span>
-                      </a>
-                    )}
-                    {selectedProject.githubUrl && (
-                      <a
-                        href={selectedProject.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors duration-300"
-                      >
+                        View Live
+                      </span>
+                    </motion.a>
+                  )}
+                  {selectedProject.githubUrl && (
+                    <motion.a
+                      href={selectedProject.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="outline-button"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <span className="flex items-center gap-2">
                         <Github className="w-5 h-5" />
-                        <span>View Code</span>
-                      </a>
-                    )}
-                  </div>
+                        View Code
+                      </span>
+                    </motion.a>
+                  )}
                 </div>
               </motion.div>
             </motion.div>
