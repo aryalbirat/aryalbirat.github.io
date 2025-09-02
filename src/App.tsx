@@ -1,11 +1,11 @@
 
 import Navbar from './components/Navbar';
 import Hero from './components/MainPage';
-// import About from './components/About';
-// import Portfolio from './components/Portfolio';
-// import PhotoGallery from './components/PhotoGallery';
-// import Contact from './components/Contact';
-// import Footer from './components/Footer';
+import About from './components/About';
+import Portfolio from './components/Portfolio';
+import PhotoGallery from './components/PhotoGallery';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -13,12 +13,12 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        {/* <About />
+        <About />
         <Portfolio />
         <PhotoGallery />
-        <Contact /> */}
+        <Contact />
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div>  );
 }
 

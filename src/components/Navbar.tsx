@@ -6,6 +6,8 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+
+  // Handle scroll event
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -14,6 +16,8 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+
 
   const navItems = [
     { name: 'Home', href: '#' },
@@ -33,6 +37,7 @@ const Navbar = () => {
           : 'bg-transparent py-5'
       }`}
     >
+      
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between">
           <motion.a
