@@ -134,7 +134,7 @@ const PhotoGallery = () => {
                   
                   <button
                     onClick={(e) => {
-                      e.stopPropagation();
+                      e.stopPropagation();//e.stopPropagation() prevents the click event from bubbling up to the parent elements
                       navigatePhoto('prev');
                     }}
                     className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 rounded-full bg-secondary-800/80 backdrop-blur-sm flex items-center justify-center text-white hover:bg-primary-500/30 transition-colors duration-300"

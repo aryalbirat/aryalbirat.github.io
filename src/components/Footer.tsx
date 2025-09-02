@@ -90,7 +90,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li className="text-secondary-100">
                 <a href="mailto:contact@birataryal.com" className="hover:text-primary-400 transition-colors">
-                  contact@birataryal.com
+                  mailbirataryal@gmail.com
                 </a>
               </li>
               <li className="text-secondary-100">

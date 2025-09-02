@@ -1,15 +1,14 @@
 import Typewriter from 'typewriter-effect';
 import { motion } from 'framer-motion';
 import { Code2, Palette, PenTool } from 'lucide-react';
-import myImage from './assets/BiratAryal.jpg';
-import bgImage from './assets/bg.avif';
 
 const Hero = () => {
   return (
     <section className="min-h-screen relative flex items-center justify-center overflow-hidden bg-hero-gradient from-primary-900 via-secondary-900 to-secondary-950">
       <div
         className="absolute inset-0 opacity-10 bg-cover bg-center"
-        style={{ backgroundImage: `url(${bgImage})` }}
+        style={{ 
+          backgroundImage: "url('/bg.avif')"}}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary-900/50 to-secondary-950" />
 
@@ -27,7 +26,7 @@ const Hero = () => {
               transition={{ delay: 0.1 }}
               className="inline-block px-4 py-1 rounded-full bg-primary-500/10 text-primary-400 text-sm font-medium mb-6"
             >
-              MERN Developer
+              Full Stack Developer
             </motion.span>
 
             <motion.h1
@@ -108,7 +107,8 @@ const Hero = () => {
                 transition={{ duration: 0.3 }}
               >
                 <motion.img
-                  src={myImage}
+              
+                  src= "/BiratAryal.jpg"
                   alt="Birat Aryal"
                   className="w-full h-full object-cover"
                   style={{ objectPosition: "center top" }}
@@ -124,7 +124,7 @@ const Hero = () => {
               </motion.div>
               
               {/* Decorative elements */}
-              <motion.div 
+                {/* <motion.div 
                 className="absolute -top-6 -right-6 w-12 h-12 rounded-xl bg-primary-500/30 backdrop-blur-md"
                 animate={{ 
                   y: [0, -10, 0],
@@ -135,20 +135,20 @@ const Hero = () => {
                   repeat: Infinity,
                   repeatType: 'reverse'
                 }}
-              />
+              />   */}
               
-              <motion.div 
-                className="absolute -bottom-4 -left-4 w-20 h-20 rounded-full bg-primary-600/20 backdrop-blur-md"
+              {/* <motion.div 
+                className="absolute -bottom-1 -left-9 w-20 h-20 rounded-full bg-primary-600/20 backdrop-blur-md"
                 animate={{ 
                   y: [0, 10, 0],
-                  x: [0, -5, 0]
+                  x: [0, -1, 0]
                 }}
                 transition={{ 
                   duration: 7, 
                   repeat: Infinity,
                   repeatType: 'reverse'
                 }}
-              />
+              /> */}
             </div>
           </motion.div>
         </div>
