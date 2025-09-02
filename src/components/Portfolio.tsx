@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Maximize2, X } from 'lucide-react';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Github, Maximize2, X } from "lucide-react";
 
 interface Project {
   id: number;
@@ -10,48 +10,129 @@ interface Project {
   image: string;
   technologies: string[];
   liveUrl?: string;
-  githubUrl?: string;
+  githubUrl: string;
 }
 
 const projects: Project[] = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description: "A modern e-commerce platform built with React and Node.js",
+    title: "Cricksy – A Smart Cricksal Booking System",
+    description:
+      "Cloud-native cricket court booking system with role-based dashboards, real-time bookings, secure authentication, and cloud deployment.",
     category: "Web Development",
-    image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80",
-    technologies: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/example"
+    image: "/Cricksy.png",
+    technologies: [
+      "MongoDB",
+      "Express",
+      "React.js",
+      "Node.js",
+      "Tailwind CSS",
+      "Redux",
+      "Docker",
+      "AWS",
+    ],
+    githubUrl: "https://github.com/aryalbirat/Cricksy",
   },
   {
     id: 2,
-    title: "Portfolio Design System",
-    description: "A comprehensive design system for portfolio websites",
-    category: "Web Design",
-    image: "https://images.unsplash.com/photo-1618788372246-79faff0c3742?auto=format&fit=crop&q=80",
-    technologies: ["Figma", "Adobe XD", "Sketch"],
-    liveUrl: "https://example.com"
+    title: "ClassCam – Real-time student attentiveness monitoring system",
+    description:
+      "AI-powered web application for real-time classroom attentiveness monitoring with video feed, analytics, and secure authentication.",
+    category: "Web Development",
+    image: "/ClassCam.png",
+    technologies: [
+      "MongoDB",
+      "Express",
+      "React.js",
+      "Node.js",
+      "Flask",
+      "YOLOv5",
+      "Tailwind CSS",
+    ],
+    // liveUrl: "https://example.com",
+    githubUrl: "https://github.com/aryalbirat/ClassCam",
   },
+
   {
     id: 3,
-    title: "Brand Identity Package",
-    description: "Complete brand identity design for a tech startup",
-    category: "Graphic Design",
-    image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80",
-    technologies: ["Photoshop", "Illustrator", "After Effects"]
-  }
+    title: " BlissSalon - Beauty Salon Booking System",
+    description:
+      "A full-stack web application for managing beauty salon appointments and services",
+    category: "Web Development",
+    image: "/BlissSalon.png",
+    technologies: [
+      "MongoDB",
+      "Express",
+      "React.js",
+      "Node.js",
+      "Tailwind CSS",
+      "Typescript",
+    ],
+    githubUrl: "https://github.com/aryalbirat/BlissSalon/",
+  },
+
+  // {
+  //   id: 4,
+  //   title: "TextUtils - Smart Text Management Application",
+  //   description:
+  //     "A full-stack web application for transforming and storing text with secure user authentication.",
+  //   category: "Web Development",
+  //   image:
+  //     "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80",
+  //   technologies: ["MongoDB", "Express", "React.js", "Node.js", "Tailwind CSS"],
+  //   githubUrl: "https://github.com/aryalbirat/Text-Utils",
+  // },
+  // {
+  //   id: 5,
+  //   title: "Linkly – Privacy-First URL Shortener with Built-in Analytics",
+  //   description:
+  //     "Secure and modern URL shortening service with link management, analytics, JWT authentication, and a responsive, privacy-focused design.",
+  //   category: "Web Development",
+  //   image:
+  //     "https://images.unsplash.com/photo-1618788372246-79faff0c3742?auto=format&fit=crop&q=80",
+  //   technologies: [
+  //     "MongoDB",
+  //     "Express",
+  //     "React.js",
+  //     "Node.js",
+  //     "Tailwind CSS",
+  //     "Python",
+  //     "JWT",
+  //   ],
+  //   githubUrl: "https://github.com/aryalbirat/Linkly",
+  // },
+  // {
+  //   id: 6,
+  //   title: "Carelink Hospital Portal – Full-Stack Hospital Management System",
+  //   description:
+  //     "Comprehensive hospital management portal with role-based authentication, CRUD operations, appointment scheduling, and responsive design built with Next.js and MongoDB.",
+  //   category: "Web Development",
+  //   image:
+  //     "https://images.unsplash.com/photo-1588776814546-5b0b35f3a1e0?auto=format&fit=crop&q=80",
+  //   technologies: [
+  //     "Next.js",
+  //     "React.js",
+  //     "Tailwind CSS",
+  //     "MongoDB",
+  //     "Mongoose",
+  //     "JWT",
+  //     "Vercel",
+  //   ],
+  //   githubUrl: "https://github.com/aryalbirat/hospital-portal",
+  //   liveUrl: "https://hospital-portal-seven.vercel.app/",
+  // },
 ];
 
 const Portfolio = () => {
-  const [filter, setFilter] = useState('all');
+  const [filter, setFilter] = useState("all");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const categories = ['all', 'Web Development', 'Web Design', 'Graphic Design'];
+  const categories = ["all", "Web Development", "Web Design", "Graphic Design"];
 
-  const filteredProjects = filter === 'all'
-    ? projects
-    : projects.filter(project => project.category === filter);
+  const filteredProjects =
+    filter === "all"
+      ? projects
+      : projects.filter((project) => project.category === filter);
   return (
     <section id="portfolio" className="py-10 sm:py-16 bg-secondary-950">
       <div className="section-container">
@@ -76,8 +157,8 @@ const Portfolio = () => {
                 onClick={() => setFilter(category)}
                 className={`px-6 py-2 rounded-full font-medium transition-colors duration-300 ${
                   filter === category
-                    ? 'bg-gradient-to-r from-primary-600 to-primary-400 text-white'
-                    : 'bg-secondary-800 text-secondary-100 hover:bg-secondary-700'
+                    ? "bg-gradient-to-r from-primary-600 to-primary-400 text-white"
+                    : "bg-secondary-800 text-secondary-100 hover:bg-secondary-700"
                 }`}
               >
                 {category.charAt(0).toUpperCase() + category.slice(1)}
@@ -111,9 +192,11 @@ const Portfolio = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-secondary-900 via-secondary-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                <h3 className="text-xl font-bold text-white mb-2">
+                  {project.title}
+                </h3>
                 <p className="text-secondary-100 mb-4">{project.description}</p>
-                
+
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, index) => (
                     <span
@@ -126,7 +209,7 @@ const Portfolio = () => {
                 </div>
 
                 <div className="flex space-x-4">
-                  {project.liveUrl && (
+                  {/* {project.liveUrl && (
                     <motion.a
                       href={project.liveUrl}
                       target="_blank"
@@ -137,7 +220,7 @@ const Portfolio = () => {
                     >
                       <ExternalLink className="w-5 h-5" />
                     </motion.a>
-                  )}
+                  )} */}
                   {project.githubUrl && (
                     <motion.a
                       href={project.githubUrl}
@@ -196,8 +279,12 @@ const Portfolio = () => {
                   </button>
                 </div>
 
-                <h3 className="text-2xl font-bold text-white mb-4">{selectedProject.title}</h3>
-                <p className="text-secondary-100 mb-6">{selectedProject.description}</p>
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  {selectedProject.title}
+                </h3>
+                <p className="text-secondary-100 mb-6">
+                  {selectedProject.description}
+                </p>
 
                 <div className="flex flex-wrap gap-3 mb-6">
                   {selectedProject.technologies.map((tech, index) => (
@@ -211,7 +298,7 @@ const Portfolio = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-4">
-                  {selectedProject.liveUrl && (
+                  {/* {selectedProject.liveUrl && (
                     <motion.a
                       href={selectedProject.liveUrl}
                       target="_blank"
@@ -225,7 +312,7 @@ const Portfolio = () => {
                         View Live
                       </span>
                     </motion.a>
-                  )}
+                  )} */}
                   {selectedProject.githubUrl && (
                     <motion.a
                       href={selectedProject.githubUrl}
